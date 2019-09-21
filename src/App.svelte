@@ -60,3 +60,19 @@
   </div>
   <div id="Profile" class="content-tab" style="display:none">Profile</div>
 </div>
+
+<div class="container section has-text-centered">
+<a href="https://github.com/voodoo/risk" target="_blank">Open Source. 
+<i class="fab fa-github"></i>
+</a>
+<br/>
+Free to use. In any way.
+<br/>
+Built with 
+<a href="https://svelte.dev" target="_blank">Svelte</a> and 
+<a href="https://www.netlify.com" target="_blank">Netlify</a>.
+<br/>  
+And love  for software development and staying healthy.
+<br/><i class="fas fa-heartbeat fa-2x"></i>
+
+</div>
