@@ -1,38 +1,62 @@
-
 <script>
-	import './mystyles.scss';
-	import { state } from './store/states.js';
-	import Navbar from './main/Navbar.svelte';
-	import Bread from './main/Bread.svelte';
-	import Home from './main/Home.svelte';
-	import Login from './main/Login.svelte';
-	import Signup from './main/Signup.svelte';
+  import { onMount } from "svelte";
+  import "./bulma.scss";
+  import { state } from "./state.js";
+  import Risk from "./pages/Risk.svelte";
+  import Weight from "./pages/Weight.svelte";
+  import Blood from "./pages/Blood.svelte";
+  import Metabolism from "./pages/Metabolism.svelte";
 
-	let usuario = 'webmaster';
+  import Chip from "./components/Chip.svelte";
 
-	// state_value via suscribe from store
-	let state_value = [
-				{ id: 0, text: 'Home' }
-		];
-	const unsubscribe = state.subscribe(value => {
-			state_value = value;
-	});
-
-	$: opcion = state_value[state_value.length - 1].text;
-
+  import { getQueryParams, openTab } from "./util.js";
+  //onMount(() => {
+  let params = getQueryParams();
+  Object.keys(params).forEach(element => {
+    $state[element] = params[element];
+  });
+  //});
 </script>
 
-<Navbar />
+<div class="tabs is-centered">
 
-<Bread current={state_value} />
+  <ul>
+    <li class="tab is-active" on:click={() => openTab(event, 'Risk')}>
+      <a>
+        Risk
+        {#if $state.scores && $state.scores.length > 0}
+          <Chip count={$state.scores.length} />
+        {/if}
+      </a>
+    </li>
+    <li class="tab" on:click={() => openTab(event, 'Weight')}>
+      <a>Weight</a>
+    </li>
+    <li class="tab" on:click={() => openTab(event, 'Blood')}>
+      <a>Blood</a>
+    </li>
+    <li class="tab" on:click={() => openTab(event, 'Metabolism')}>
+      <a>Metabolism</a>
+    </li>
+    <li class="tab" on:click={() => openTab(event, 'Profile')}>
+      <a>Profile</a>
+    </li>
 
-<body class="container">
+  </ul>
+</div>
 
-	{#if opcion == 'Home'}
-		<Home />
-	{/if}
-
-	{#if opcion == 'Collapsed'}
-		<Login />
-		<Signup />
-	{/if}</body>
+<div class="container section">
+  <div id="Risk" class="content-tab">
+    <Risk />
+  </div>
+  <div id="Weight" class="content-tab" style="display:none">
+    <Weight />
+  </div>
+  <div id="Blood" class="content-tab" style="display:none">
+    <Blood />
+  </div>
+  <div id="Metabolism" class="content-tab" style="display:none">
+    <Metabolism />
+  </div>
+  <div id="Profile" class="content-tab" style="display:none">Profile</div>
+</div>
