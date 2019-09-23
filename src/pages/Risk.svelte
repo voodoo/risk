@@ -2,7 +2,6 @@
   import { state } from "../state.js";
   import Score from "../components/Score.svelte";
   import Chip from "../components/Chip.svelte";
-
   let riskWaistHeight,
     riskWaistHeightScore,
     riskBmi,
@@ -60,6 +59,9 @@
     //console.log(urlKeys);
     window.history.replaceState({}, "Title", "?" + urlKeys.join("&"));
   }
+  function keyed(event){
+    console.log("keyed", event.detail.value)
+  }
 </script>
 
 <style>
@@ -67,6 +69,7 @@
     float: right;
   }
 </style>
+
 
 <h1 class="title">Risk</h1>
 <h3 class="subtitle">Copy the url above to save or share</h3>

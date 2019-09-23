@@ -1,8 +1,6 @@
 <script>
-  export let label = "Label";
-  export let field = null;
-  export let help = "help";
-  //import { state } from "../state.js";
+  export let label = null
+  export let value = null
 </script>
 
 <div class="field is-horizontal">
@@ -13,7 +11,11 @@
     <div class="field">
       <div class="field">
         <p class="control">
-          <slot />
+          <input
+            class="input is-primary"
+            bind:value={value}
+            type="number"
+            placeholder={label} />
         </p>
       </div>
       <p class="help">{label}</p>
