@@ -1,19 +1,20 @@
 <script>
-  import { state } from "../state.js";
-  import Field from "../components/Field.svelte";
+  import { state } from "../state.js"
+  import NumberField from "../components/NumberField.svelte"
+
 </script>
 
 <div class="card">
-  <header class="card-header">
+  <!-- <header class="card-header">
     <p class="card-header-title">Lipids</p>
-  </header>
+  </header> -->
   <div class="card-content">
     <div class="content">
 
-      <Field bind:value={$state.tg} label="Trigs"/>
-      <Field bind:value={$state.hdl} label="HDL"/>
-      <Field bind:value={$state.ldl} label="LDL"/>
-      <Field bind:value={$state.chol} label="Total Cholesterol"/>
+      <NumberField bind:value={$state.tg} label="Tryglicerides"/>
+      <NumberField bind:value={$state.hdl} label="HDL"/>
+      <NumberField bind:value={$state.ldl} label="LDL"/>
+      <NumberField bind:value={$state.chol} label="Total Cholesterol"/>
 
       <!---content-->
     </div>

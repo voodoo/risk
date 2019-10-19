@@ -1,6 +1,6 @@
 <script>
   import { state } from "../state.js";
-  import Field from "../components/Field.svelte";
+  import NumberField from "../components/NumberField.svelte";
 </script>
 
 <div class="card">
@@ -10,9 +10,6 @@
   <div class="card-content">
     <div class="content">
 
-      <Field bind:value={$state.waist} label="Waist"/>
-      <Field bind:value={$state.height} label="Height (inches)" />
-      <Field bind:value={$state.weight} label="Weight (lbs)"/>
 
     </div><!---content-->
   </div><!---card-content-->

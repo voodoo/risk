@@ -9,18 +9,24 @@
 
   import Chip from "./components/Chip.svelte";
 
-  import { getQueryParams, openTab } from "./util.js";
+  import { getQueryParams, openTab, updateUrlState  } from "./util.js";
 
   let params = getQueryParams();
   Object.keys(params).forEach(element => {
-    $state[element] = params[element];
+    $state[element] = decodeURIComponent(params[element]);
   });
-</script>
 
-<div class="tabs is-centered">
+  $:{
+    // all pages use this
+    updateUrlState($state) 
+  }
+
+</script>
+  <p/>
+<div class="tabs  is-fullwidth">
 
   <ul>
-    <li class="tab is-active" on:click={() => openTab(event, 'Risk')}>
+    <!-- <li class="tab is-active" on:click={(event) => openTab(event, 'Risk')}>
       <a>
         Risk
         {#if $state.scores && $state.scores.length > 0}
@@ -28,16 +34,16 @@
         {/if}
       </a>
     </li>
-    <li class="tab" on:click={() => openTab(event, 'Weight')}>
+    <li class="tab" on:click={(event) => openTab(event, 'Weight')}>
       <a>Weight</a>
-    </li>
-    <li class="tab" on:click={() => openTab(event, 'Lipids')}>
+    </li> -->
+    <li class="tab is-active" on:click={(event) => openTab(event, 'Lipids')}>
       <a>Lipids</a>
     </li>
-    <li class="tab" on:click={() => openTab(event, 'Metabolism')}>
+    <li class="tab" on:click={(event) => openTab(event, 'Metabolism')}>
       <a>Metabolism</a>
     </li>
-    <li class="tab" on:click={() => openTab(event, 'Profile')}>
+    <li class="tab" on:click={(event) => openTab(event, 'Profile')}>
       <a>Profile</a>
     </li>
 
@@ -45,13 +51,13 @@
 </div>
 
 <div class="container section">
-  <div id="Risk" class="content-tab">
+  <!-- <div id="Risk" class="content-tab">
     <Risk />
   </div>
   <div id="Weight" class="content-tab" style="display:none">
     <Weight />
-  </div>
-  <div id="Lipids" class="content-tab" style="display:none">
+  </div> -->
+  <div id="Lipids" class="content-tab">
     <Lipids />
   </div>
   <div id="Metabolism" class="content-tab" style="display:none">

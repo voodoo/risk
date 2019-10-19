@@ -1,3 +1,14 @@
+export function updateUrlState(state) {
+  let urlKeys = [];
+  Object.keys(state).forEach(function(element) {
+    if (element != '' && state[element] != null && element != "scores"){
+      urlKeys.push(element + "=" + state[element]);
+    }        
+  });
+  //console.log(urlKeys);
+  window.history.replaceState({}, "Title", "?" + urlKeys.join("&"));    
+}
+
 export function getQueryParams() {
     return document.location.search
       .replace(/(^\?)/, "")

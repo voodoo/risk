@@ -1,5 +1,6 @@
 <script>
   export let label = null
+  export let help = null
   export let value = null
 </script>
 
@@ -18,7 +19,9 @@
             placeholder={label} />
         </p>
       </div>
-      <p class="help">{label}</p>
+      {#if help}
+        <p class="help">{help}</p>
+      {/if}
     </div>
   </div>
 </div>

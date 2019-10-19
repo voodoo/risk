@@ -59,9 +59,7 @@
     //console.log(urlKeys);
     window.history.replaceState({}, "Title", "?" + urlKeys.join("&"));
   }
-  function keyed(event){
-    console.log("keyed", event.detail.value)
-  }
+
 </script>
 
 <style>

@@ -25,6 +25,10 @@ export default {
 			// a separate file — better for performance
 			css: css => {
 				css.write('public/bundle.css');
+			},
+			onwarn: (warning, handler) =>{
+				if(warning.code == "a11y-missing-attribute") return;
+				handler(warning);
 			}
 		}),
 
